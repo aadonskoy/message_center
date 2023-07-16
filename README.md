@@ -1,24 +1,70 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Message Center is a service for sending messages to users via selected provider services usinf simple load balancer.
 
-Things you may want to cover:
+Visit https://messagecenter.fly.dev/ to see send messages with their statuses.
 
-* Ruby version
+## How to send a message
+You can use make POST reuest with postman or curl:
+`https://messagecenter.fly.dev/api/messages`
 
-* System dependencies
+with body:
+```
+{
+    "text": "Hello World!",
+    "phone_number": "sms"
+}
+```
 
-* Configuration
+Ex.:
+```bash
+curl --location --request POST 'https://messagecenter.fly.dev/api/messages' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "text": "Hello World!",
+    "phone_number": "1234567890"
+}'
+```
 
-* Database creation
+## Statuses
 
-* Database initialization
+- `created` - initial state: no request has been made to send the message (maybe 500 from delivery service)
+- `pending` - request has been made to send the message
 
-* How to run the test suite
+When callback received:
+- `delivered` - message has been delivered to the recipient
+- `failed` - message has failed to be delivered to the recipient
+- `invalid` - message is invalid
 
-* Services (job queues, cache servers, search engines, etc.)
+## Errors
+Service does not accept data with empty `text` and/or `phone_number` fields.
 
-* Deployment instructions
+Status 422
 
-* ...
+```
+{
+    "errors": {
+        "text": [
+            "can't be blank"
+        ],
+        "phone_number": [
+            "can't be blank"
+        ]
+    }
+}
+```
+
+Also `text` and `phone_number` fields length are limited:
+
+```
+{
+    "errors": {
+        "text": [
+            "is too long (maximum is 500 characters)"
+        ],
+        "phone_number": [
+            "is too long (maximum is 25 characters)"
+        ]
+    }
+}
+```
