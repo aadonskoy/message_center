@@ -26,6 +26,8 @@ module Messages
         service = SERVICES.reject { _1[:service_id] == service[:service_id] }.first
         result = Messages::SendService.new(service, @message_id).call
 
+        # We are processing asynchronously, so we can't raise error here
+        # to see it in the bugtracker and handle manually
         raise Messages::ProcessSendingError, "All services are down. Message #{@message_id} can't be sent" unless result
       end
 
