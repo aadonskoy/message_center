@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  url: postgres://postgres:password@localhost:5432
+  # For details on connection pooling, see Rails configuration guide
+  # https://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: message_center_development
+
+test:
+  <<: *default
+  database: message_center_test
+
+production:
+  <<: *default
+  database: message_center_production
+  username: <%= ENV["MESSAGE_CENTER_DATABASE_USER"] %>
+  password: <%= ENV["MESSAGE_CENTER_DATABASE_PASSWORD"] %>
