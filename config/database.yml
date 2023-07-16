@@ -19,3 +19,4 @@ production:
   database: message_center_production
   username: <%= ENV["MESSAGE_CENTER_DATABASE_USER"] %>
   password: <%= ENV["MESSAGE_CENTER_DATABASE_PASSWORD"] %>
+  url: <%= ENV["DATABASE_URL"] %>
