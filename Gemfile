@@ -80,6 +80,7 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
   gem "webmock"
+  gem "shoulda-matchers"
 end
 
 gem "dockerfile-rails", ">= 1.5", :group => :development
