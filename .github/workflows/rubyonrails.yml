@@ -32,6 +32,8 @@ jobs:
         uses: ruby/setup-ruby@55283cc23133118229fd3f97f9336ee23a179fcf # v1.146.0
         with:
           bundler-cache: true
+      - name: Prepare configs
+        run: cp .env.example .env
       # Add or replace database setup steps here
       - name: Set up database schema
         run: bin/rails db:schema:load
