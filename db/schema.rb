@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema[7.0].define(version: 2023_07_15_162428) do
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
   create_table "messages", force: :cascade do |t|
