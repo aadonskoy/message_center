@@ -15,7 +15,7 @@ with body:
 ```
 {
     "text": "Hello World!",
-    "phone_number": "sms"
+    "phone_number": "1234567890"
 }
 ```
 
