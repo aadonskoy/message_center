@@ -21,12 +21,9 @@ with body:
 
 Ex.:
 ```bash
-curl --location --request POST 'https://messagecenter.fly.dev/api/messages' \
---header 'Content-Type: application/json' \
---data-raw '{
-    "text": "Hello World!",
-    "phone_number": "1234567890"
-}'
+curl -X POST -H "Content-Type: application/json" \
+-d '{"text": "Hello World!", "phone_number": "1234567890"}' \
+"https://messagecenter.fly.dev/api/messages"
 ```
 
 ## Statuses
