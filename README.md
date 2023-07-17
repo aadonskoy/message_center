@@ -4,6 +4,9 @@ Message Center is a service for sending messages to users via selected provider 
 
 Visit https://messagecenter.fly.dev/ to see sent messages with their statuses.
 
+<img width="600" alt="screenshot" src="https://github.com/aadonskoy/message_center/assets/1927898/172f2b37-5b0c-49a9-b914-522ce826bb9a">
+
+
 ## How to send a message
 You can use make POST reuest with postman or curl:
 `https://messagecenter.fly.dev/api/messages`
